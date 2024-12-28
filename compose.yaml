@@ -1,10 +1,12 @@
 services:
   php:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: php-fpm/Dockerfile
     container_name: symfony-php
     volumes:
       - ./app:/var/www/html
-      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
     #depends_on:
     #  - db
     working_dir: /var/www/html
